@@ -1,0 +1,47 @@
+<% if current_user %>
+  Logged in as <%= current_user.username %>.
+  <%= link_to "Search", search_path %>,
+  <%= link_to "Log Out", logout_path %>,
+  <%= link_to "New Complaint", newcomplaint_path %> and 
+  <%= link_to 'Edit your profile', edit_user_path(current_user) %>
+  <h1>Complaints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Category</th>
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaints.each do |complaint| %>
+        <% if complaint.user_id == current_user.id%>
+        <tr>
+            <td><%= complaint.title %></td>
+            <td><%= complaint.text %></td>
+            <td><%= complaint.category %></td>
+            <td><%= complaint.company %></td>
+            <td><%= link_to 'Show', complaint %></td>
+            <td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
+            <td><%= link_to 'Destroy', complaint,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>    
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% else %>
+  <%= link_to "Search", search_path %>,
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+

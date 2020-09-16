@@ -1,0 +1,38 @@
+<% if current_user %>
+    <%= link_to "Log Out", logout_path %>
+<% else %>
+    <%= link_to "Sign Up", signup_path %> or 
+    <%= link_to "Log In", login_path %>
+<% end %>
+
+<%= form_tag(search_path, method: :get) do%>
+    <%= text_field_tag(:search, params[:search])%><br/>
+    <%= radio_button_tag(:search_company,'Empresa1', params[:search_company])%>Empresa1<br/>
+    <%= radio_button_tag(:search_company,'Empresa2', params[:search_company])%>Empresa2<br/>
+    <%= radio_button_tag(:search_company,'Empresa3', params[:search_company])%>Empresa3<br/>
+    <%= submit_tag("Search")%>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Category</th>
+      <th>Company</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @complaints.each do |complaint| %>
+      <tr>
+        <td><%= complaint.title %></td>
+        <td><%= complaint.text %></td>
+        <td><%= complaint.category %></td>
+        <td><%= complaint.company %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
