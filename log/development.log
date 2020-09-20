@@ -8111,3 +8111,480 @@ Processing by HomeController#search as HTML
 Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 0.6ms | Allocations: 7219)
 
 
+Started GET "/" for ::1 at 2020-09-20 09:13:23 -0300
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 22.4ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 294ms (Views: 246.3ms | ActiveRecord: 0.0ms | Allocations: 13858)
+
+
+Started GET "/login" for ::1 at 2020-09-20 09:13:26 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 584)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 59.2ms | ActiveRecord: 0.0ms | Allocations: 6201)
+
+
+Started POST "/sessions" for ::1 at 2020-09-20 09:13:29 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"fhJWsAI4ReIR5s0z3pLI9Ig4uXWXLkmg2EK312S1N31UiLF1QO9fVdA+brES6fn01XDtTt41D7gJa66w/zbphg==", "username"=>"marcos", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "marcos"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 409ms (ActiveRecord: 1.3ms | Allocations: 7510)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:13:29 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 7215)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 65ms (Views: 62.8ms | ActiveRecord: 1.2ms | Allocations: 12319)
+
+
+Started GET "/new" for ::1 at 2020-09-20 09:15:14 -0300
+Processing by ComplaintsController#new as HTML
+  Rendering complaints/new.html.erb within layouts/application
+  Rendered complaints/_form.html.erb (Duration: 87.7ms | Allocations: 5406)
+  Rendered complaints/new.html.erb within layouts/application (Duration: 96.2ms | Allocations: 5778)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 156ms (Views: 154.1ms | ActiveRecord: 0.0ms | Allocations: 11502)
+
+
+Started POST "/complaints" for ::1 at 2020-09-20 09:15:17 -0300
+Processing by ComplaintsController#create as HTML
+  Parameters: {"authenticity_token"=>"jVL6X3IQdLXddJplSRvhcaXtaPL3Zz3mT9UEFRk3omTgTt3MyUlLSNjHZUH8i54LTlN4l+CDCBVBzYbMbGGFkA==", "complaint"=>{"title"=>"", "text"=>"", "category"=>""}, "commit"=>"Create Complaint"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[36mComplaint Create (1.0ms)[0m  [1m[32mINSERT INTO "complaints" ("title", "text", "category", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", ""], ["text", ""], ["category", ""], ["user_id", 1], ["created_at", "2020-09-20 12:15:17.712010"], ["updated_at", "2020-09-20 12:15:17.712010"]]
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 91ms (ActiveRecord: 7.8ms | Allocations: 7440)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:15:17 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.1ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1652)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.4ms | Allocations: 6736)
+
+
+Started DELETE "/complaints/7" for ::1 at 2020-09-20 09:15:20 -0300
+Processing by ComplaintsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RX8fKhDk2ePyKrvBh+SEbS6pP5ex8EMTrX6+pNSH7SGoWEPJsnLfKv/+uWdR5ukY8JMzBJSI8BM2KOySjjzrSQ==", "id"=>"7"}
+  [1m[36mComplaint Load (0.3ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:68:in `set_complaint'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+  [1m[36mComplaint Destroy (0.8ms)[0m  [1m[31mDELETE FROM "complaints" WHERE "complaints"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+Redirected to http://localhost:3000/complaints
+Completed 302 Found in 36ms (ActiveRecord: 7.4ms | Allocations: 2987)
+
+
+Started GET "/complaints" for ::1 at 2020-09-20 09:15:20 -0300
+Processing by ComplaintsController#index as HTML
+  Rendering complaints/index.html.erb within layouts/application
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/complaints/index.html.erb:18
+  Rendered complaints/index.html.erb within layouts/application (Duration: 17.1ms | Allocations: 1417)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 62.0ms | ActiveRecord: 0.2ms | Allocations: 6624)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:15:24 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.1ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1512)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.3ms | Allocations: 6583)
+
+
+Started GET "/complaints/4/edit" for ::1 at 2020-09-20 09:15:29 -0300
+Processing by ComplaintsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:68:in `set_complaint'
+  Rendering complaints/edit.html.erb within layouts/application
+  Rendered complaints/_form.html.erb (Duration: 1.4ms | Allocations: 1133)
+  Rendered complaints/edit.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1402)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 46.0ms | ActiveRecord: 0.2ms | Allocations: 7163)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:15:30 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1523)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 62.8ms | ActiveRecord: 0.4ms | Allocations: 6593)
+
+
+Started GET "/complaints/4/edit" for ::1 at 2020-09-20 09:15:31 -0300
+Processing by ComplaintsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:68:in `set_complaint'
+  Rendering complaints/edit.html.erb within layouts/application
+  Rendered complaints/_form.html.erb (Duration: 1.4ms | Allocations: 1104)
+  Rendered complaints/edit.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1238)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 48.3ms | ActiveRecord: 0.2ms | Allocations: 6850)
+
+
+Started GET "/complaints/4" for ::1 at 2020-09-20 09:15:32 -0300
+Processing by ComplaintsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:68:in `set_complaint'
+  Rendering complaints/show.html.erb within layouts/application
+  Rendered complaints/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 343)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 59.7ms | ActiveRecord: 0.2ms | Allocations: 6097)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:15:33 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.1ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1512)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 49.2ms | ActiveRecord: 0.3ms | Allocations: 6571)
+
+
+Started GET "/new" for ::1 at 2020-09-20 09:15:35 -0300
+Processing by ComplaintsController#new as HTML
+  Rendering complaints/new.html.erb within layouts/application
+  Rendered complaints/_form.html.erb (Duration: 1.2ms | Allocations: 1059)
+  Rendered complaints/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1163)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.0ms | Allocations: 6226)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:34:57 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1540)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 45.2ms | ActiveRecord: 0.4ms | Allocations: 6597)
+
+
+Started GET "/logout" for ::1 at 2020-09-20 09:34:59 -0300
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 312)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:34:59 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 100)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 48.2ms | ActiveRecord: 0.0ms | Allocations: 5192)
+
+
+Started GET "/login" for ::1 at 2020-09-20 09:35:01 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 328)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 55.4ms | ActiveRecord: 0.0ms | Allocations: 5376)
+
+
+Started POST "/sessions" for ::1 at 2020-09-20 09:35:05 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"beEIXIRU13sabq7PhsIwxUR+HFZuB3rhTHECxSvFjqNHe++ZxoPNzNu2DU1KuQHFGTZIbSccPPmdWBuisEZQWA==", "username"=>"marcos", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "marcos"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 306)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 239ms (Views: 44.6ms | ActiveRecord: 0.2ms | Allocations: 6000)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:35:12 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 97)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 51.1ms | ActiveRecord: 0.0ms | Allocations: 5156)
+
+
+Started GET "/login" for ::1 at 2020-09-20 09:52:36 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 319)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 45.1ms | ActiveRecord: 0.0ms | Allocations: 5347)
+
+
+Started POST "/sessions" for ::1 at 2020-09-20 09:52:38 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"IICFtBJQXHPmlfWm0HwXxZ1Zd2ho/CsfbqKjSMfyGp4KGmJxUIdGxCdNViQcBybFwBEjUyHnbQe/i7ovXHHEZQ==", "username"=>"marcos", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "marcos"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:5:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 195ms (ActiveRecord: 0.3ms | Allocations: 977)
+
+
+Started GET "/" for ::1 at 2020-09-20 09:52:38 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1540)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 48.0ms | ActiveRecord: 0.4ms | Allocations: 6614)
+
+
+Started DELETE "/complaints/4" for ::1 at 2020-09-20 10:08:19 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ComplaintsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"uIWUC92CAXCEWIN+ZcXowP17UYEq4PLDADAOKptjt+NVosjofxQHuYmMgdizx4W1I0FdEg+YQcObZlwcwdixiw==", "id"=>"4"}
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints" WHERE "complaints"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:68:in `set_complaint'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+  [1m[36mComplaint Destroy (1.2ms)[0m  [1m[31mDELETE FROM "complaints" WHERE "complaints"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/complaints_controller.rb:58:in `destroy'
+Redirected to http://localhost:3000/complaints
+Completed 302 Found in 14ms (ActiveRecord: 8.0ms | Allocations: 2876)
+
+
+Started GET "/complaints" for ::1 at 2020-09-20 10:08:19 -0300
+Processing by ComplaintsController#index as HTML
+  Rendering complaints/index.html.erb within layouts/application
+  [1m[36mComplaint Load (0.3ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/complaints/index.html.erb:18
+  Rendered complaints/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 990)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 50ms (Views: 49.0ms | ActiveRecord: 0.3ms | Allocations: 6068)
+
+
+Started GET "/" for ::1 at 2020-09-20 10:08:26 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.1ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1376)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 53.7ms | ActiveRecord: 0.4ms | Allocations: 6431)
+
+
+Started GET "/" for ::1 at 2020-09-20 10:31:00 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1400)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 44.4ms | ActiveRecord: 0.4ms | Allocations: 6456)
+
+
+Started GET "/new" for ::1 at 2020-09-20 10:31:04 -0300
+Processing by ComplaintsController#new as HTML
+  Rendering complaints/new.html.erb within layouts/application
+  Rendered complaints/_form.html.erb (Duration: 1.3ms | Allocations: 1056)
+  Rendered complaints/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1160)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 51.3ms | ActiveRecord: 0.0ms | Allocations: 6228)
+
+
+Started POST "/complaints" for ::1 at 2020-09-20 10:31:10 -0300
+Processing by ComplaintsController#create as HTML
+  Parameters: {"authenticity_token"=>"GWg21KmF6GlEBhyULqOV1OhE9uxbsCNttHFU+SBq1MR0dBFHEtzXlEG147CbM+quA/rmiUxUFp66adYgVTzzMA==", "complaint"=>{"title"=>"fsdfsf", "text"=>"fdgd", "category"=>"gdfgfdg", "company"=>"Empresa2"}, "commit"=>"Create Complaint"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[36mComplaint Create (0.8ms)[0m  [1m[32mINSERT INTO "complaints" ("title", "text", "category", "company", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "fsdfsf"], ["text", "fdgd"], ["category", "gdfgfdg"], ["company", "Empresa2"], ["user_id", 1], ["created_at", "2020-09-20 13:31:10.477844"], ["updated_at", "2020-09-20 13:31:10.477844"]]
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/complaints_controller.rb:31:in `block in create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 8.0ms | Allocations: 4420)
+
+
+Started GET "/" for ::1 at 2020-09-20 10:31:10 -0300
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.1ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1501)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 50.5ms | ActiveRecord: 0.3ms | Allocations: 6573)
+
+
+Started GET "/" for ::1 at 2020-09-20 11:37:19 -0300
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+  [1m[36mComplaint Load (0.2ms)[0m  [1m[34mSELECT "complaints".* FROM "complaints"[0m
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 40.9ms | Allocations: 14247)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 152ms (Views: 124.5ms | ActiveRecord: 2.0ms | Allocations: 27377)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-09-20 11:37:22 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 40.0ms | Allocations: 5273)
+  Rendered users/edit.html.erb within layouts/application (Duration: 46.3ms | Allocations: 5687)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 106ms (Views: 102.4ms | ActiveRecord: 0.2ms | Allocations: 11939)
+
+
+Started PATCH "/users/1" for ::1 at 2020-09-20 11:37:23 -0300
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"v7eLV/lhhGfgBCUyWjk8IxGY8tin2j9Ts3ju4jVdTBl6ldKxKdbR2iFWkaXRJT88PjoEZkok/ZdSZg1izNswcw==", "user"=>{"username"=>"marcos", "email"=>"marcos", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "marcos"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms | Allocations: 4405)
+
+
+Started GET "/users/1" for ::1 at 2020-09-20 11:37:24 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 7.1ms | Allocations: 270)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 46.1ms | ActiveRecord: 0.2ms | Allocations: 6072)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-09-20 11:37:30 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.4ms | Allocations: 1150)
+  Rendered users/edit.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1286)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 60.5ms | ActiveRecord: 0.2ms | Allocations: 6909)
+
+
+Started PATCH "/users/1" for ::1 at 2020-09-20 11:37:36 -0300
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"Jb1TIlCP/7lMGtlEEEuG0prl1bikYgOuqmk6atrx4TLgnwrEgDiqBI1IbdObV4XNtUcjBkmcwWpLd9nqI3edWA==", "user"=>{"username"=>"marcos", "email"=>"marcos", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "marcos"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "$2a$12$NAGTwsiy32nfBmS9qkBNYeiNvyXqfBG3xNU1jjiJ5vpYsZuhG1I4G"], ["updated_at", "2020-09-20 14:37:36.279290"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 253ms (ActiveRecord: 8.0ms | Allocations: 4922)
+
+
+Started GET "/users/1" for ::1 at 2020-09-20 11:37:36 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 95)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.2ms | Allocations: 5720)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-09-20 11:37:55 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.5ms | Allocations: 1147)
+  Rendered users/edit.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1281)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.2ms | Allocations: 6889)
+
+
+Started PATCH "/users/1" for ::1 at 2020-09-20 11:38:02 -0300
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"eMPUrG/4mNYBt8RVg7zLKhYcW0w9WhE0AQLbTz7tdwO94Y1Kv0/Na8DlcMIIoMg1Ob6t8tCk0/DgHDjPx2sLaQ==", "user"=>{"username"=>"marcos", "email"=>"marcos", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Update User", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "marcos"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:44:in `block in update'
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 1.8ms | Allocations: 1366)
+  Rendered users/edit.html.erb within layouts/application (Duration: 16.6ms | Allocations: 1500)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 284ms (Views: 69.0ms | ActiveRecord: 0.6ms | Allocations: 11185)
+
+
