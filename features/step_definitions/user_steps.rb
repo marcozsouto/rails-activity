@@ -46,3 +46,9 @@ end
 Then("i see a updated user message") do
     expect(page).to have_content("User was successfully updated.")
 end
+
+#FOR SCENARIO edit password when Password confirmation doesn't match Password 
+
+Then("i see a user invalid message") do
+    expect(page).to have_content("1 error prohibited this user from being saved:")
+end

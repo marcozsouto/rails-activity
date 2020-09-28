@@ -15,3 +15,10 @@ Feature:  user
         When i fill username 'jennie', email 'jennie@gmail.com', password '123456' and password confirmation '123456'
         And i click edit
         Then i see a updated user message
+
+    Scenario: edit password when Password confirmation doesn't match Password
+        Given i am logged with the user whose username is 'rose'
+        And i am on the user's edit page with the username is 'rose'
+        When i fill username 'jennie', email 'jennie@gmail.com', password '123456' and password confirmation '654321'
+        And i click edit
+        Then i see a user invalid message
