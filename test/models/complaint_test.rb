@@ -17,5 +17,11 @@ class ComplaintTest < ActiveSupport::TestCase
     assert_not complaint.update text:"too small"
   end
 
+  test'should not save complaint with category violating maximum lengh' do
+    user = User.new username:"jisoo", email:"jisoo@gmail.com", password:"654321", password_confirmation:"654321"
+    assert user.save
+    complaint = Complaint.new title:"title", text:"minimum lengh is 15chars", category:"category is too big to be saved", company:"Empresa1", user_id: user.id
+    assert_not complaint.save
+  end    
 
 end
