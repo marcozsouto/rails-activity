@@ -76,8 +76,6 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
-<<<<<<< HEAD
-=======
     cucumber (3.1.2)
       builder (>= 2.1.2)
       cucumber-core (~> 3.2.0)
@@ -101,7 +99,6 @@ GEM
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
     database_cleaner (1.8.5)
->>>>>>> cucumber
     diff-lcs (1.4.4)
     erubi (1.9.0)
     ffi (1.13.1-x64-mingw32)
