@@ -22,3 +22,9 @@ Feature:  user
         When i fill username 'jennie', email 'jennie@gmail.com', password '123456' and password confirmation '654321'
         And i click edit
         Then i see a user invalid message
+    
+    Scenario: create user with blank email
+        Given i am at the page create user
+        When i fill username 'lisa', email '', password '654321' and password confirmation '654321'
+        And i click create
+        Then i see a user invalid message 
