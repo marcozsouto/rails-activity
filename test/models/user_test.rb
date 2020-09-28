@@ -12,5 +12,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.save
   end
 
-    
+  test 'should not edit user with invalid email' do
+    user = User.new username:"lisa", email:"lisa@gmail.com", password:"654321", password_confirmation:"654321"
+    user.save
+    assert_not user.update email:"lisa"
+  end
+
+       
 end
